@@ -3,19 +3,38 @@ package com.thepeakstore.operador.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 @Entity
 @Table(name = "products")
+@Document(indexName = "products")
 public class Producto {
 
     @Id
+    @org.springframework.data.annotation.Id
     private int id;
+    
+    @Field(type = FieldType.Text)
     private String name;
+    
+    @Field(type = FieldType.Double)
     private double price;
+    
+    @Field(type = FieldType.Keyword)
     private String brand;
+    
+    @Field(type = FieldType.Keyword)
     private String category;
+    
+    @Field(type = FieldType.Text)
     private String description;
+    
+    @Field(type = FieldType.Keyword)
     private String image;
+    
+    @Field(type = FieldType.Boolean)
     private boolean visible;
 
     public Producto() {}
