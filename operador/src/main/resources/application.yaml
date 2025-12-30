@@ -1,5 +1,7 @@
 ## Configuracion de Spring
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: tps-products
 
@@ -18,6 +20,11 @@ spring:
   h2: 
     console:
       enabled: true
+      settings:
+        web-allow-others: true
+
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URL:http://localhost:9200}
 
 ## Configuracion de Instancia 
 server:
